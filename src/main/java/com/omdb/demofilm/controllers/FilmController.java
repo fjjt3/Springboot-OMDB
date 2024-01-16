@@ -47,7 +47,7 @@ public class FilmController {
             filmService.save(updatedFilm);
             return ResponseEntity.ok("Film updated successfully");
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The film with id " + id + " not found");
         }
     }
 
@@ -58,7 +58,7 @@ public class FilmController {
             filmService.delete(id);
             return ResponseEntity.ok("Film deleted successfully");
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The film with id " + id + " not found");
         }
     }
 

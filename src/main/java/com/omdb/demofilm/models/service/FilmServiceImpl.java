@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FilmServiceImpl implements IFilmService{
@@ -29,7 +30,8 @@ public class FilmServiceImpl implements IFilmService{
     @Override
     @Transactional(readOnly = true)
     public Film findOne(Long id) {
-        return filmDao.findById(id).orElseGet(null);
+        Optional<Film> filmOptional = filmDao.findById(id);
+        return filmOptional.orElse(null); //
     }
 
     @Override
